@@ -1,3 +1,5 @@
+package Array;
+
 public class FindMinValueInArray {
     public int findMinimum(int[] arr) {
         if (arr == null || arr.length == 0) {
