@@ -21,7 +21,7 @@ public class ReverseArray {
         int[] numbers = {2, 11, 5, 10, 7, 8};
         printArray(numbers);
         reverse(numbers, 0, numbers.length - 1);
-        printArray(number);
+        printArray(numbers);
     }
 
 }
