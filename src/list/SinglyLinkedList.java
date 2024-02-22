@@ -130,9 +130,27 @@ public class SinglyLinkedList {
         return false;
     }
 
+    public ListNode reverse(ListNode head) {
+        if (head == null) {
+            return head;
+        }
+        ListNode current = head;
+        ListNode previous = null;
+        ListNode next = null;
+
+        while(current != null) {
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+        return previous;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
-        singlyLinkedList.head = new ListNode(10);
+        ListNode head = new ListNode(10);
+        singlyLinkedList.head = head;
         ListNode second = new ListNode(1);
         ListNode third = new ListNode(8);
         ListNode fourth = new ListNode(11);
@@ -160,5 +178,8 @@ public class SinglyLinkedList {
         singlyLinkedList.delete(2);
         singlyLinkedList.display();
 
+        ListNode newHead = singlyLinkedList.reverse(head);
+        singlyLinkedList.head = newHead;
+        singlyLinkedList.display();
     }
 }
