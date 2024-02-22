@@ -115,7 +115,19 @@ public class SinglyLinkedList {
             ListNode current = previous.next;
             previous.next = current.next;
         }
-
+    }
+    public boolean find(ListNode head, int searchKey) {
+        if(head == null) {
+            return false;
+        }
+        ListNode current = head;
+        while(current != null) {
+            if(current.data == searchKey) {
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
     }
 
     public static void main(String[] args) {
@@ -147,5 +159,6 @@ public class SinglyLinkedList {
         singlyLinkedList.display();
         singlyLinkedList.delete(2);
         singlyLinkedList.display();
+
     }
 }
