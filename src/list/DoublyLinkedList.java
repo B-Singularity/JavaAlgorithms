@@ -69,6 +69,18 @@ public class DoublyLinkedList {
         System.out.println("null");
     }
 
+    public void insertFirst(int value) {
+        ListNode newNode = new ListNode(value);
+        if (isEmpty()) {
+            tail = newNode;
+        } else {
+            head.previous = newNode;
+        }
+        newNode.next = head;
+        head = newNode;
+        length++;
+    }
+
     public static void main(String[] args) {
         DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
         doublyLinkedList.insertLast(1);
