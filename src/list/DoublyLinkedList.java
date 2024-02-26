@@ -100,16 +100,37 @@ public class DoublyLinkedList {
         return temp;
     }
 
+    public ListNode deleteLast() {
+        if(isEmpty()) {
+            throw new NoSuchElementException();
+        }
+
+        ListNode temp = tail;
+        if(head == tail) {
+            head = null;
+        } else {
+            tail.previous.next = null;
+        }
+        tail = tail.previous;
+        temp.previous = null;
+        length--;
+        return temp;
+    }
+
     public static void main(String[] args) {
         DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
         doublyLinkedList.insertLast(1);
         doublyLinkedList.insertLast(10);
         doublyLinkedList.insertLast(15);
+        doublyLinkedList.insertLast(20);
 
         doublyLinkedList.displayBackward();
         doublyLinkedList.displayForward();
 
         doublyLinkedList.deleteFirst();
+        doublyLinkedList.displayForward();
+
+        doublyLinkedList.deleteLast();
         doublyLinkedList.displayForward();
     }
 }
