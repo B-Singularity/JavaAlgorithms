@@ -66,10 +66,24 @@ public class CircularSinglyLinkedList {
 		length++;
 	}
 
+	public void insertLast(int data) {
+		ListNode temp = new ListNode(data);
+		if (last == null) {
+			last = temp;
+			last.next = last;
+		} else {
+			temp.next = last.next;
+			last.next = temp;
+			last = temp;
+		}
+	}
+
 	public static void main(String[] args) {
 		CircularSinglyLinkedList circularSinglyLinkedList = new CircularSinglyLinkedList();
 		circularSinglyLinkedList.insertFirst(1);
 		circularSinglyLinkedList.insertFirst(5);
+		circularSinglyLinkedList.insertLast(10);
+		circularSinglyLinkedList.insertLast(15);
 		circularSinglyLinkedList.display();
 	}
 }
