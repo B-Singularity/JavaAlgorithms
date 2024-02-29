@@ -41,8 +41,22 @@ public class CircularSinglyLinkedList {
 		last = fourth;
 	}
 
+	public void display() {
+		if (last == null) {
+			return;
+		}
+
+		ListNode first = last.next;
+		while (first != last) {
+			System.out.println(first.data + " ");
+			first = first.next;
+		}
+		System.out.println(first.data);
+	}
+
 	public static void main(String[] args) {
 		CircularSinglyLinkedList circularSinglyLinkedList = new CircularSinglyLinkedList();
 		circularSinglyLinkedList.creatCircularLinkedList();
+		circularSinglyLinkedList.display();
 	}
 }
