@@ -1,5 +1,7 @@
 package list;
 
+import java.util.NoSuchElementException;
+
 public class CircularSinglyLinkedList {
 
 	private ListNode last;
@@ -76,6 +78,22 @@ public class CircularSinglyLinkedList {
 			last.next = temp;
 			last = temp;
 		}
+	}
+
+	public ListNode removeFirst() {
+		if (last == null) {
+			throw new NoSuchElementException("List is empty!");
+		}
+
+		ListNode temp = last.next;
+		if (last.next == last) {
+			last = null;
+		} else {
+			last.next = temp.next;
+		}
+		temp.next = null;
+		length--;
+		return temp;
 	}
 
 	public static void main(String[] args) {
