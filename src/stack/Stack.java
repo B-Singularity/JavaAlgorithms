@@ -2,16 +2,16 @@ package stack;
 
 import java.util.EmptyStackException;
 
-public class Stack {
+public class Stack<E> {
 
-	private ListNode top;
+	private ListNode<E> top;
 	private int length;
 
-	private class ListNode {
-		private int data;
-		private ListNode next;
+	private static class ListNode<E> {
+		private E data;
+		private ListNode<E> next;
 
-		private ListNode(int data) {
+		private ListNode(E data) {
 			this.data = data;
 		}
 	}
@@ -29,25 +29,25 @@ public class Stack {
 		return length == 0;
 	}
 
-	public void push(int data) {
-		ListNode temp = new ListNode(data);
+	public void push(E data) {
+		ListNode<E> temp = new ListNode<>(data);
 		temp.next = top;
 		top = temp;
 		length++;
 	}
 
-	public int pop() {
+	public E pop() {
 		if (isEmpty()) {
 			throw new EmptyStackException();
 		}
 
-		int result = top.data;
+		E result = top.data;
 		top = top.next;
 		length--;
 		return result;
 	}
 
-	public int peek() {
+	public E peek() {
 		if (isEmpty()) {
 			throw new EmptyStackException();
 		}
@@ -55,7 +55,7 @@ public class Stack {
 	}
 
 	public static void main(String[] args) {
-		Stack stack = new Stack();
+		Stack<Integer> stack = new Stack<>();
 		stack.push(10);
 		stack.push(15);
 		stack.push(20);
@@ -63,5 +63,5 @@ public class Stack {
 
 		System.out.println(stack.peek());
 	}
-
 }
+
