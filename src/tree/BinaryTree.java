@@ -29,7 +29,19 @@ public class BinaryTree {
         second.right = fifth;
     }
 
-    public static void main(String[] args) {
+    public void preOrder(TreeNode root) {
+        if (root == null) {
+            return;
+        }
 
+        System.out.println(root.data + " ");
+        preOrder(root.left);
+        preOrder(root.right);
+    }
+
+    public static void main(String[] args) {
+        BinaryTree bt = new BinaryTree();
+        bt.createBinaryTree();
+        bt.preOrder(bt.root);
     }
 }
