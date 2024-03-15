@@ -2,6 +2,7 @@ package graph;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class Graph {
 
@@ -57,6 +58,26 @@ public class Graph {
         }
     }
 
+    public void dfs(int s) {
+        boolean[] visited = new boolean[V];
+        Stack<Integer> stack = new Stack<>();
+        stack.push(s);
+
+        while (!stack.isEmpty()) {
+            int u = stack.pop();
+            if (!visited[u]) {
+                visited[u] = true;
+                System.out.print(u + " ");
+
+                for (int v : adj[u]) {
+                    if (!visited[v]) {
+                        stack.push(v);
+                    }
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
         Graph g = new Graph(5);
         g.addEdge(0, 1);
@@ -65,6 +86,8 @@ public class Graph {
         g.addEdge(3, 0);
         g.addEdge(2, 4);
         g.bfs(0);
+        System.out.println();
+        g.dfs(0);
     }
 }
 
