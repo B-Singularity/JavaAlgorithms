@@ -59,6 +59,18 @@ public class HashTable {
     }
 
     public String get(Integer key) {
+        if (key == null) {
+            throw new IllegalArgumentException("Key is null !!");
+        }
+        int bucketIndex = getBucketIndex(key);
+        HashNode head = buckets[bucketIndex];
+        while (head != null) {
+            if (head.key.equals(key)) {
+                return head.value;
+            }
+            head = head.next;
+        }
+
         return null;
     }
 
@@ -73,5 +85,7 @@ public class HashTable {
         table.put(21, "Harry");
         table.put(31, "Dinesh");
         System.out.println(table.size());
+        System.out.println(table.get(31));
+        System.out.println(table.get(90));
     }
 }
